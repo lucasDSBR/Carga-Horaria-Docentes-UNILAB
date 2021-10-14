@@ -1,0 +1,32 @@
+<main class="form-signin text-center" *ngIf="!isAutenticado">
+  <form novalidade [formGroup]="formulario" (ngSubmit)="confirmarCadastro()">
+    <h1 class="h3 mb-3 fw-normal">Entrar</h1>
+    <div class="form-floating">
+      <input 
+      type="text" 
+      class="form-control" 
+      id="floatingInput" 
+      placeholder="Exemplo: ics"
+      formControlName="Usuario"
+      name="Usuario"
+      >
+      <label for="floatingInput">Usuario</label>
+      <div class="form-floating">
+        <input 
+        type="password" 
+        class="form-control" 
+        id="floatingPassword" 
+        placeholder="Password"
+        formControlName="Senha"
+        name="Senha"
+        >
+        <label for="floatingPassword">Senha</label>
+        <button class="w-100 btn btn-success" type="submit">Entrar</button>
+        <p *ngIf="isAutenticado" class="mt-5 mb-3 text-muted">© 2017–2021</p>
+      </div>
+    </div>
+  </form>
+</main>
+<div *ngIf="isAutenticado">
+<h1>Autenticado</h1>
+</div>
