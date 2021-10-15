@@ -8,7 +8,6 @@ export class AutenticacaoGuard implements CanActivate {
     constructor(private loginService: LoginService){}
 
     canActivate(): boolean{
-        console.log(this.loginService.getuser())
         return this.loginService.autenticado()
     }
 }

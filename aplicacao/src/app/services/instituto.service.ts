@@ -13,7 +13,7 @@ export class InstitutoService {
     }
     //Realizar autenticação
     public busca(instituto: string): Promise<any>{
-        return this.http.get(`${this.url_api}=${instituto}`)
+        return this.http.get(`${this.url_api}${instituto}`)
         .toPromise()
         .then((resposta: any) => resposta.json());
     }
