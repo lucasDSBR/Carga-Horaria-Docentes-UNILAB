@@ -12,7 +12,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { RodapeComponent } from './pages/rodape/rodape.component';
-
 @NgModule({
   declarations: [
     AppComponent,

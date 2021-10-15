@@ -1,4 +1,6 @@
-<main class="form-signin text-center" *ngIf="!isAutenticado">
+<app-menu></app-menu>
+<div>
+<main class="form-signin text-center" *ngIf="!isAutenticado && data != null">
   <form novalidade [formGroup]="formulario" (ngSubmit)="confirmarCadastro()">
     <h1 class="h3 mb-3 fw-normal">Entrar</h1>
     <div class="form-floating">
@@ -27,6 +29,7 @@
     </div>
   </form>
 </main>
-<div *ngIf="isAutenticado">
-<h1>Autenticado</h1>
+<div *ngIf="isAutenticado && data != null">
+  <app-home [data]="data"></app-home>
+</div>
 </div>

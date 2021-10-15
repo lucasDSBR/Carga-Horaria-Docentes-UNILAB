@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationStart, NavigationExtras, Router } from '@angular/router';
 import { Login } from '../../model/login.model';
@@ -11,6 +11,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent implements OnInit {
   public isAutenticado = false;
+  public data = {}
   private formulario: FormGroup = new FormGroup({
     'Usuario': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
     'Senha': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
@@ -38,6 +39,8 @@ export class LoginComponent implements OnInit {
         this.isAutenticado = resposta
         if(resposta){
           this.listaPesquisadores(dataUser, resposta)
+        }else{
+          console.log("erro")
         }
       })
       .catch((err: any) =>{
@@ -46,8 +49,7 @@ export class LoginComponent implements OnInit {
     }
   }
   public listaPesquisadores(dataUser, resposta){
-    console.log(dataUser)
-    console.log(resposta)
+    this.data = {dataUser, resposta}
   }
 
 }

@@ -1,23 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute } from '@angular/router';
-import { Login } from '../../model/login.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { InstitutoService } from '../../services/instituto.service';
+import { Institutos } from '../../model/institutos.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [InstitutoService]
 })
 export class HomeComponent implements OnInit {
-  userWithRole: Login;
-  constructor(public activatedRoute: ActivatedRoute) {
+
+  @Input() data;
+
+  public dadosPuro: Array<Institutos>
+  public dadosOrganizados = []
+  
+  constructor(private institutoService: InstitutoService) {
 
    }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.userWithRole.usuario = JSON.parse(params['user']);
-      console.log(this.userWithRole.usuario)
-    });
+    if(this.data.resposta){
+      this.buscarPesquisadoresInstituto(this.data.dataUser.usuario.toUpperCase())
+    }
+  }
+  
+  public buscarPesquisadoresInstituto(data){
+    this.institutoService.busca(data).then((resposta: Array<Institutos>) => {
+      this.dadosPuro = resposta
+      this.organizarDados()
+    })
+    .catch((err: any) => {
+      console.log(err)
+    })
+  }
+
+  public organizarDados(){
   }
 
 }

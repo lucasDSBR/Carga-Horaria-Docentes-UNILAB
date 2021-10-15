@@ -1,3 +1,19 @@
-<p>
-  home works!
-</p>
+<div class="container">
+  <div class="row">
+
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="card text-center m-2" style="width: 20rem;" *ngFor="let i of dadosPuro">
+      <div class="card-body">
+        <h5 class="card-title">{{i.docente}}</h5>
+        <div class="row">
+          <p class="card-text">Projeto: {{i.projeto}}</p>
+        </div>
+        <div class="row">
+          <p class="card-text">Função: {{i.funcao}}</p>
+        </div>
+      </div>
+      <a href="#" class="btn btn-primary mb-2">Mais</a>
+    </div>
+  </div>
+</div>
