@@ -12,6 +12,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { RodapeComponent } from './pages/rodape/rodape.component';
+import { AutenticacaoGuard } from './services/autenticacaoGuard.service';
+import { LoginService } from './services/login.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { RodapeComponent } from './pages/rodape/rodape.component';
     CommonModule,
     AppRoutingModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR'}, AutenticacaoGuard, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

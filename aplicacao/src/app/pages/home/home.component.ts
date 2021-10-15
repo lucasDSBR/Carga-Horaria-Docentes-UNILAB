@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InstitutoService } from '../../services/instituto.service';
 import { Institutos } from '../../model/institutos.model';
+import { LoginService } from '../../services/login.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,28 +14,19 @@ export class HomeComponent implements OnInit {
 
   public dadosPuro: Array<Institutos>
   public dadosOrganizados = []
-  
-  constructor(private institutoService: InstitutoService) {
+  public usuario
+  constructor(private loginService: LoginService) {
 
    }
 
   ngOnInit() {
-    if(this.data.resposta){
-      this.buscarPesquisadoresInstituto(this.data.dataUser.usuario.toUpperCase())
-    }
-  }
-  
-  public buscarPesquisadoresInstituto(data){
-    this.institutoService.busca(data).then((resposta: Array<Institutos>) => {
-      this.dadosPuro = resposta
-      this.organizarDados()
-    })
-    .catch((err: any) => {
-      console.log(err)
-    })
+    this.usuario = localStorage.getItem('user')
   }
 
   public organizarDados(){
   }
 
+  public sair(): void{
+    this.loginService.sair()
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, NavigationStart, NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Login } from '../../model/login.model';
 import { LoginService } from '../../services/login.service';
 @Component({
