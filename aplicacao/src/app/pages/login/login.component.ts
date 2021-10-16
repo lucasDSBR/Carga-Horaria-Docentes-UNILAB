@@ -10,6 +10,7 @@ import { LoginService } from '../../services/login.service';
   providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
+  public alertaDadosIncorretos = false
   public isAutenticado = false;
   public data = {}
   private formulario: FormGroup = new FormGroup({
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
         if(resposta){
           this.listaPesquisadores(dataUser, resposta)
         }else{
-          console.log("erro")
+          this.alertaDadosIncorretos = true
         }
       })
       .catch((err: any) =>{
