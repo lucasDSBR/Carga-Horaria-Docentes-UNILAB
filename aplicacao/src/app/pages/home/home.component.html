@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body rounded">
   <div class="container-fluid">
-    <a class="navbar-brand" style="color: #FFF;">Carga Horária Docentes UNILAB
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/logoUnilab.png" alt="" width="35" height="30" class="d-inline-block align-text-top">
+      Carga horária de pesquisa
     </a>
     <div class="row">
       <div class="col">
@@ -8,7 +10,7 @@
           <div class="dropdown show" id="dopd">
             <ul class="navbar-nav me-auto ">
               <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFF;">
+                <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {{usuario}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 10px;">
@@ -28,7 +30,16 @@
 
   </div>
 </nav>
+
 <div class="container mt-4" *ngIf="dadosOrganizados.length > 0; else semdados">
+  <div class="row justify-content-md-center">
+    <div class="col">
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="button" class="btn btn-sm btn-warning mb-2" disabled="true">Gerar CSV</button>
+      </div>
+    </div>
+    
+  </div>
   <div class="row justify-content-md-center">
     <div class="card text-center m-2" style="width: 20rem;" *ngFor="let i of dadosOrganizados">
       <h5 class="card-title mt-2">{{instituto}}</h5>
@@ -45,6 +56,7 @@
       <button (click)="detalhes(i.docente)" class="btn btn-sm btn-success mb-2">Detalhes</button>
     </div>
   </div>
+  
 </div>
 <ng-template #semdados>
   <div class="alert alert-light mt-5" role="alert" id="alertaDados">

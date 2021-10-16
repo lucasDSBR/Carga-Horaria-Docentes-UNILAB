@@ -5,7 +5,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { URL_API_AUTENTICACAO } from '../api/app.api';
 import { Login } from '../model/login.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import * as CryptoJS from 'crypto-js';
+import { copyStyles } from '@angular/animations/browser/src/util';
 @Injectable()
 export class LoginService {
 
@@ -16,19 +19,21 @@ export class LoginService {
     constructor(private http: Http, private router: Router){
         
     }
-    //Realizar autenticação
-    public autenticacao(usuario: Login): Promise<any>{
-        return this.http.get(`${this.url_api}name=${usuario.usuario}&pass=${usuario.senha}`)
-        .toPromise()
-        .then((resposta: any) => {
-            this.isAutenticado = resposta.json()
-            this.user = `${usuario.usuario}`
-            localStorage.setItem('isAutenticado', resposta.json())
-            localStorage.setItem('isAutenticado2', `${CryptoJS.AES.encrypt(usuario.usuario, this.secretKey.trim()).toString()}`)
-            localStorage.setItem('isAutenticado3', `${CryptoJS.AES.encrypt("ch_docentes.php?instituto_sigla=", this.secretKey.trim()).toString()}`)
-            this.router.navigate(['/inicio'])
-        }
-        );
+    public login(logindata: Login): Observable<any>{
+        let headers: Headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.post(
+            this.url_api,
+            JSON.stringify(logindata),
+            new RequestOptions({headers: headers})
+            ).map((resposta: any) => {
+                this.isAutenticado = resposta.json()
+                this.user = `${logindata.name}`
+                localStorage.setItem('isAutenticado', resposta.json())
+                localStorage.setItem('isAutenticado2', `${CryptoJS.AES.encrypt(logindata.name, this.secretKey.trim()).toString()}`)
+                this.router.navigate(['/inicio'])
+            })
     }
 
     public autenticado(): boolean{

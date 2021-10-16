@@ -32,11 +32,9 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.param = CryptoJS.AES.decrypt(localStorage.getItem('isAutenticado3'), this.secretKey.trim()).toString(CryptoJS.enc.Utf8)
     this.usuario = CryptoJS.AES.decrypt(localStorage.getItem('isAutenticado2'), this.secretKey.trim()).toString(CryptoJS.enc.Utf8).toUpperCase()
-    this.institutoService.busca(this.param+this.usuario)
+    this.institutoService.busca(this.usuario)
     .then((resposta: any) => {
-      
       this.dadosPuros = resposta
       this.organizarDados()
     })

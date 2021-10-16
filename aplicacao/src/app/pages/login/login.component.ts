@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   public isAutenticado = false;
   public data = {}
   private formulario: FormGroup = new FormGroup({
-    'Usuario': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(120)]),
-    'Senha': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    'Usuario': new FormControl(null, [Validators.required]),
+    'Senha': new FormControl(null, [Validators.required]),
   });
 
   constructor(
@@ -36,7 +36,19 @@ export class LoginComponent implements OnInit {
         this.formulario.value.Usuario, 
         this.formulario.value.Senha
       )
-      this.loginService.autenticacao(dataUser).then((resposta: any) =>{
+      this.loginService.login(dataUser)
+      .subscribe((dataCadastro: any) => {
+        console.log(dataCadastro)
+        this.isAutenticado = dataCadastro
+        if(dataCadastro){
+          this.listaPesquisadores(dataUser, dataCadastro)
+        }else{
+          this.alertaDadosIncorretos = true
+        }
+      })
+      
+      
+      /*then((resposta: any) =>{
         this.isAutenticado = resposta
         if(resposta){
           this.listaPesquisadores(dataUser, resposta)
@@ -47,6 +59,7 @@ export class LoginComponent implements OnInit {
       .catch((err: any) =>{
         console.log(err)
       })
+      */
     }
   }
   public listaPesquisadores(dataUser, resposta){
