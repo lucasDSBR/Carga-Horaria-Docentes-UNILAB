@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       )
       this.loginService.login(dataUser)
       .subscribe((dataCadastro: any) => {
-        console.log(dataCadastro)
         this.isAutenticado = dataCadastro
         if(dataCadastro){
           this.listaPesquisadores(dataUser, dataCadastro)
@@ -46,20 +45,6 @@ export class LoginComponent implements OnInit {
           this.alertaDadosIncorretos = true
         }
       })
-      
-      
-      /*then((resposta: any) =>{
-        this.isAutenticado = resposta
-        if(resposta){
-          this.listaPesquisadores(dataUser, resposta)
-        }else{
-          this.alertaDadosIncorretos = true
-        }
-      })
-      .catch((err: any) =>{
-        console.log(err)
-      })
-      */
     }
   }
   public listaPesquisadores(dataUser, resposta){
