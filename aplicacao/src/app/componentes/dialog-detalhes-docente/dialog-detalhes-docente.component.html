@@ -1,0 +1,39 @@
+<mat-dialog-content>
+  <div class="table-responsive">
+  <table class="table" style="color:#FFF">
+    <thead>
+      <tr>
+        <th scope="col">Ano Edital</th>
+        <th scope="col">Edital</th>
+        <th scope="col">Processo</th>
+        <th scope="col">Cotas</th>
+        <th scope="col">Projeto</th>
+        <th scope="col">Carga Horária</th>
+        <th scope="col">Função</th>
+        <th scope="col">Campus</th>
+        <th scope="col">Instituto</th>
+        <th scope="col">Início do projeto</th>
+        <th scope="col">Fim do projeto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of dataUser">
+        <td>{{x.AnoEdital}}</td>
+        <td>{{x.edital}}</td>
+        <td>{{x.processo}}</td>
+        <td>{{x.cotas}}</td>
+        <td>{{x.projeto}}</td>
+        <td style="color: #FFD700">{{x.ch}}</td>
+        <td style="color: #3CB371">{{x.funcao}}</td>
+        <td>{{x.Campus}}</td>
+        <td>{{x.instituto_sigla}}</td>
+        <td>{{corrigirData(x.inicio_projeto) | date: 'dd/MM/yyyy'}}</td>
+        <td>{{corrigirData(x.final_projeto) | date: 'dd/MM/yyyy'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-warning btn-sm m-2"mat-button mat-dialog-close>Ok</button>
+</mat-dialog-actions>

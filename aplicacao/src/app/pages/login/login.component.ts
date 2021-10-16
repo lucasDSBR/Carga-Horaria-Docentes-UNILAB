@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   public isAutenticado = false;
   public data = {}
   private formulario: FormGroup = new FormGroup({
-    'Usuario': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
-    'Senha': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
+    'Usuario': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(120)]),
+    'Senha': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
   });
 
   constructor(
