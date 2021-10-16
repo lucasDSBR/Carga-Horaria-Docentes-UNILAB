@@ -1,6 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow mb-5 bg-body rounded">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/logoUnilab.png" alt="" width="35" height="30" class="d-inline-block align-text-top">
+      Carga horária de pesquisa
+    </a>
+  </div>
+</nav>
 <div class="mt-5">
 <main class="form-signin text-center">
   <form novalidade [formGroup]="formulario" (ngSubmit)="confirmarCadastro()">
+    
     <h1 class="h3 mb-3 fw-normal">Entrar</h1>
     <div class="form-floating">
       <input 
@@ -11,6 +20,7 @@
       formControlName="Usuario"
       name="Usuario"
       >
+      <small *ngIf="!formulario.get('Usuario').valid && formulario.get('Usuario').touched" class="form-text text-danger">Campo obrigatório</small>
       <label for="floatingInput">Usuario</label>
       <div class="form-floating">
         <input 
@@ -21,11 +31,12 @@
         formControlName="Senha"
         name="Senha"
         >
+        <small *ngIf="!formulario.get('Senha').valid && formulario.get('Senha').touched" class="form-text text-danger">Campo obrigatório</small>
         <label for="floatingPassword">Senha</label>
         <div class="alert alert-danger" role="alert" *ngIf="alertaDadosIncorretos">
           Desculpe, dados incorretos.
         </div>
-        <button class="w-100 btn btn-success" type="submit">Entrar</button>
+        <button class="w-100 btn btn-success btn-sm" type="submit">Entrar</button>
         <p *ngIf="isAutenticado" class="mt-5 mb-3 text-muted">© 2017–2021</p>
       </div>
     </div>

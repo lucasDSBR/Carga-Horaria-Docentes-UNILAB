@@ -24,7 +24,6 @@ export class DialogDetalhesDocenteComponent implements OnInit {
     .then((resposta: any) => {
       this.dataUser = resposta
     })
-    console.log(this.dataUser)
   }
   corrigirData(data: string): any{
     const date = new Date(data).toISOString()

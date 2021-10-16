@@ -44,6 +44,6 @@
 </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button class="btn btn-success btn-sm m-2" (click)="gerarCSV()">Gerar CSV</button>
+  <button class="btn btn-success btn-sm m-2" (click)="gerarCSV()" [disabled]="dataUser == undefined">Gerar CSV</button>
   <button class="btn btn-warning btn-sm m-2"mat-button mat-dialog-close>Ok</button>
 </mat-dialog-actions>

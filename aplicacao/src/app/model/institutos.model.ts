@@ -2,7 +2,7 @@ export class Institutos {
     AnoEdital: string
     Campus: string
     Instituto: string
-    ch: number
+    ch: string
     cotas: number
     docente: string
     edital: string
