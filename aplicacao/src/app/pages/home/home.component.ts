@@ -101,7 +101,36 @@ export class HomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-  
+  gerarCSV(){
+    if(this.dadosPuros != undefined){
+      var csv = 'Edital, Ano do Edital, Processo, Projeto, Início do projeto, Fim do projeto, Docente, CH, Função, Instituto, Campus, Cotas, Sigla do Instituto\n';
+ 
+      this.dadosPuros.forEach(function(row) {
+              csv += row.edital;
+              csv += ','+ row.AnoEdital;
+              csv += ','+ row.processo;
+              csv += ','+ row.projeto;
+              csv += ','+ row.inicio_projeto;
+              csv += ','+ row.final_projeto;
+              csv += ','+ row.docente;
+              csv += ','+ row.ch;
+              csv += ','+ row.funcao;
+              csv += ','+ row.Instituto;
+              csv += ','+ row.Campus;
+              csv += ','+ row.cotas;
+              csv += ','+ row.instituto_sigla;
+              csv += '\n';
+      });
+    
+      var hiddenElement = document.createElement('a');
+      hiddenElement.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURI(csv);
+      hiddenElement.target = '_blank';
+      hiddenElement.download = 'dadosGerais.csv';
+      hiddenElement.click();
+    }else{
+
+    }
+  }
 
   public sair(): void{
     this.loginService.sair()
