@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   private secretKey = "U2FsdGVkX1/B1Ci5EgxWsURvO6PEHzNNgEgqIJ968mw="
   public dadosPuros: Array<Institutos>
   public dadosOrganizados = []
+  public instituto = "../../../assets/institutos/icen.png"
   public usuario
   public param
   constructor(
@@ -39,6 +40,36 @@ export class HomeComponent implements OnInit {
       this.dadosPuros = resposta
       this.organizarDados()
     })
+
+    switch(this.usuario){
+      case "ICEN":
+        this.instituto = "INSTITUTO DE CIÊNCIAS EXATAS E DA NATUREZA";
+        break;
+      case "IH":
+        this.instituto = "INSTITUTO DE HUMANIDADES";
+        break;
+      case "ICS":
+        this.instituto = "INSTITUTO DE CIÊNCIAS DA SAÚDE";
+        break;
+      case "ICSA":
+        this.instituto = "INSTITUTO DE CIÊNCIAS SOCIAIS APLICADAS";
+        break;
+      case "IDR":
+        this.instituto = "INSTITUTO DE DESENVOLVIMENTO RURAL";
+        break;
+      case "IEAD":
+        this.instituto = "INSTITUTO DE EDUCAÇÃO A DISTÂNCIA";
+        break;
+      case "IEDS":
+        this.instituto = "INSTITUTO DE ENGENHARIAS E DESENVOLVIMENTO SUSTENTÁVEL";
+        break;
+      case "ILL":
+        this.instituto = "INSTITUTO DE LINGUAGENS E LITERATURA";
+        break;
+      default:
+        this.instituto = "";
+      
+    }
     
   }
 

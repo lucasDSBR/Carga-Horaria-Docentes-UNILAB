@@ -1,4 +1,4 @@
-<div class="mt-5" *ngIf="!isAutenticado && data != null">
+<div class="mt-5">
 <main class="form-signin text-center">
   <form novalidade [formGroup]="formulario" (ngSubmit)="confirmarCadastro()">
     <h1 class="h3 mb-3 fw-normal">Entrar</h1>
@@ -22,6 +22,9 @@
         name="Senha"
         >
         <label for="floatingPassword">Senha</label>
+        <div class="alert alert-danger" role="alert" *ngIf="alertaDadosIncorretos">
+          Desculpe, dados incorretos.
+        </div>
         <button class="w-100 btn btn-success" type="submit">Entrar</button>
         <p *ngIf="isAutenticado" class="mt-5 mb-3 text-muted">© 2017–2021</p>
       </div>

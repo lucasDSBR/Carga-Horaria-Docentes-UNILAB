@@ -4,9 +4,20 @@
     padding: 20px;
     margin: auto;
 }
+.navbar {
+    background-color: #424242;
+    color: #FFF;
+}
 #userimg{
     padding: 2px;
     margin: 10px;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid #FFF;
+    background-color: #FFF;
+}
+#alertaDados {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    margin: auto;
 }
