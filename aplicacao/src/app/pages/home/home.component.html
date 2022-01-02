@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body rounded">
   <div class="container-fluid">
     <a class="navbar-brand">
-      <img src="http://proppg.unilab.edu.br/forms/paineis/chpunilab/assets/logoUnilab.png" alt="" width="35" height="30" class="d-inline-block align-text-top">
+      <img src="https://proppg.unilab.edu.br/forms/paineis/chpunilab/assets/logoUnilab.png" alt="" width="35" height="30" class="d-inline-block align-text-top">
       Carga horária de pesquisa
     </a>
     <div class="row">
@@ -23,7 +23,7 @@
       </div>
       <div class="col">
         <div>
-          <img src="http://proppg.unilab.edu.br/forms/paineis/chpunilab/assets/user.png" alt="imagem do usuario" width="40" height="40" id="userimg"data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+          <img src="https://proppg.unilab.edu.br/forms/paineis/chpunilab/assets/user.png" alt="imagem do usuario" width="40" height="40" id="userimg"data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
 
 <div class="container mt-4" *ngIf="dadosOrganizados.length > 0; else semdados">
 
-  <div class="row justify-content-md-center">
+  <div class="row justify-content-center">
     <div class="card text-center m-2" style="width: 20rem;" *ngFor="let i of dadosOrganizados">
       <h5 class="card-title mt-2">{{instituto}}</h5>
       <hr>
@@ -42,9 +42,14 @@
           <h5 class="card-title">{{i.docente}}</h5>
         </div>
         <h6 class="card-subtitle mb-2 text-muted">
-          <p class="card-text">HORAS ACUMULADAS</p>
+          <p class="card-text">HORAS ACUMULADAS:</p>
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">
           <p class="card-text">{{getHoras(i.docente)}} Horas</p>
         </h6>
+        <p>
+          Para mais informações sobre a carga horária semanal em projetos de pesquisa (IC e Fluxo contínuo) de {{i.docente}} clique em "Detalhes" 
+        </p>
       </div>
       <button (click)="detalhes(i.docente)" class="btn btn-sm btn-success mb-2">Detalhes</button>
     </div>
@@ -61,7 +66,7 @@
   <div class="alert alert-light mt-5" role="alert" id="alertaDados">
     <div class="row marcador align-items-center">
       <div class="col mx-auto text-center">
-        <img src="http://proppg.unilab.edu.br/forms/paineis/chpunilab/assets/carregando.gif" width="40" height="40">
+        <img src="https://proppg.unilab.edu.br/forms/paineis/chpunilab/assets/carregando.gif" width="40" height="40">
         <p>Aguarde um momento. Estamos realizando a busca dos dados.</p>
       </div>
     </div>

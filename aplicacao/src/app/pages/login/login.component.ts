@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
 
     }else{
       let dataUser: Login = new Login(
-        this.formulario.value.Usuario, 
-        this.formulario.value.Senha
+        this.formulario.value.Usuario.toLowerCase(), 
+        this.formulario.value.Senha.toLowerCase()
       )
       this.loginService.login(dataUser)
       .subscribe((dataCadastro: any) => {
